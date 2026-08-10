@@ -251,6 +251,11 @@
   .skill-card:hover .skill-tag { border-color: rgba(0,229,255,0.25); color: var(--text); }
 
   /* EXPERIENCE */
+  .exp-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
   .exp-card {
     border: 1px solid var(--border);
     padding: 2.5rem;
@@ -259,6 +264,19 @@
     position: relative;
     overflow: hidden;
     transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .exp-period.current {
+    color: var(--accent3);
+    border-color: rgba(16,185,129,0.35);
+  }
+  .exp-period.current::before {
+    content: '';
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent3);
+    margin-right: 0.4rem;
+    animation: blink 1.5s ease-in-out infinite;
   }
   .exp-card::before {
     content: '';
@@ -316,6 +334,10 @@
     padding: 2rem;
     position: relative; overflow: hidden;
     transition: background 0.25s;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: none;
   }
   .project-card:hover { background: var(--surface2); }
   .project-card::after {
@@ -329,7 +351,13 @@
   .project-num {
     font-size: 0.6rem; letter-spacing: 0.15em; color: var(--muted);
     margin-bottom: 1rem;
+    display: flex; align-items: center; justify-content: space-between;
   }
+  .project-link-icon {
+    font-size: 0.75rem; color: var(--muted);
+    transition: color 0.25s, transform 0.25s;
+  }
+  .project-card:hover .project-link-icon { color: var(--accent); transform: translate(2px,-2px); }
   .project-title {
     font-family: 'Syne', sans-serif; font-weight: 700;
     font-size: 1rem; line-height: 1.3;
@@ -556,8 +584,9 @@
         <div class="skill-icon">📊</div>
         <div class="skill-cat">Observability</div>
         <div class="skill-tags">
-          <span class="skill-tag">Prometheus</span><span class="skill-tag">Grafana</span>
-          <span class="skill-tag">CloudWatch</span><span class="skill-tag">Log Monitoring</span>
+          <span class="skill-tag">Elastic Stack</span><span class="skill-tag">Kibana</span>
+          <span class="skill-tag">APM Server</span><span class="skill-tag">Prometheus</span>
+          <span class="skill-tag">Grafana</span><span class="skill-tag">CloudWatch</span>
         </div>
       </div>
       <div class="skill-card">
@@ -590,24 +619,43 @@
       <h2 class="section-title">Experience</h2>
       <div class="section-line"></div>
     </div>
-    <div class="exp-card">
-      <div class="exp-header">
-        <div>
-          <div class="exp-role">Cloud & DevOps Engineer Intern</div>
-          <div class="exp-company">Whizzact PVT LTD — Mumbai</div>
+    <div class="exp-stack">
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Software Engineer Trainee (DevOps)</div>
+            <div class="exp-company">Enveu (Mlinots Technologies Pvt Ltd) — Noida</div>
+          </div>
+          <span class="exp-period current">July 2026 – Present</span>
         </div>
-        <span class="exp-period">June 2024 – April 2025</span>
+        <ul class="exp-list">
+          <li>Working within the Technology department as a DevOps trainee, supporting infrastructure and deployment workflows for Enveu's platform.</li>
+          <li>Gaining hands-on exposure to client-facing environments while maintaining strict confidentiality of proprietary systems and data.</li>
+          <li>Applying prior AWS, CI/CD, and IaC experience in a production team setting under senior engineer guidance.</li>
+          <li>Monitoring and maintaining the health of QA infrastructure.</li>
+          <li>Contributing to the upgradation of EKS clusters.</li>
+        </ul>
+        <div style="font-size:0.65rem;color:var(--muted);margin-top:1.25rem;letter-spacing:0.05em;"></div>
       </div>
-      <ul class="exp-list">
-        <li>Deployed and managed 5+ application environments on AWS EC2 with high availability through proactive monitoring and performance optimization.</li>
-        <li>Built end-to-end CI/CD pipelines using Jenkins and GitHub, reducing manual deployment effort by ~60% through automated build and deploy workflows.</li>
-        <li>Automated provisioning of EC2, RDS, and S3 resources using CloudFormation templates, cutting environment setup time from hours to minutes.</li>
-        <li>Developed and tested RESTful APIs integrated with AWS Lambda and API Gateway for serverless backend processing.</li>
-        <li>Configured IAM roles, policies, and security groups to enforce least-privilege access control across all AWS resources.</li>
-        <li>Managed Amazon S3 buckets for file storage, backups, and static asset hosting with appropriate lifecycle policies.</li>
-        <li>Monitored AWS resource utilization and identified cost-optimization opportunities improving overall infrastructure efficiency.</li>
-        <li>Performed Linux server administration including log monitoring, cron job scheduling, and permissions management on EC2 instances.</li>
-      </ul>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Cloud & DevOps Engineer Intern</div>
+            <div class="exp-company">Whizzact PVT LTD — Mumbai</div>
+          </div>
+          <span class="exp-period">June 2024 – April 2025</span>
+        </div>
+        <ul class="exp-list">
+          <li>Deployed and managed 5+ application environments on AWS EC2 with high availability through proactive monitoring and performance optimization.</li>
+          <li>Built end-to-end CI/CD pipelines using Jenkins and GitHub, reducing manual deployment effort by ~60% through automated build and deploy workflows.</li>
+          <li>Automated provisioning of EC2, RDS, and S3 resources using CloudFormation templates, cutting environment setup time from hours to minutes.</li>
+          <li>Developed and tested RESTful APIs integrated with AWS Lambda and API Gateway for serverless backend processing.</li>
+          <li>Configured IAM roles, policies, and security groups to enforce least-privilege access control across all AWS resources.</li>
+          <li>Managed Amazon S3 buckets for file storage, backups, and static asset hosting with appropriate lifecycle policies.</li>
+          <li>Monitored AWS resource utilization and identified cost-optimization opportunities improving overall infrastructure efficiency.</li>
+          <li>Performed Linux server administration including log monitoring, cron job scheduling, and permissions management on EC2 instances.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -622,8 +670,8 @@
     </div>
     <div class="projects-grid">
 
-      <div class="project-card">
-        <div class="project-num">Project / 01</div>
+      <a class="project-card" href="https://github.com/kunalvhatkar/terraform-aws-infrastructure" target="_blank" rel="noopener noreferrer">
+        <div class="project-num"><span>Project / 01</span><span class="project-link-icon">↗</span></div>
         <div class="project-title">Infrastructure as Code with Terraform on AWS</div>
         <div class="project-desc">Provisioned complete AWS infrastructure with Terraform replacing manual workflows — remote state on S3, modular structure, zero manual interventions.</div>
         <div class="project-tech">
@@ -634,10 +682,10 @@
           <span class="tech-pill">IAM</span>
           <span class="tech-pill">Security Groups</span>
         </div>
-      </div>
+      </a>
 
-      <div class="project-card">
-        <div class="project-num">Project / 02</div>
+      <a class="project-card" href="https://github.com/kunalvhatkar/jenkins-cicd-ec2" target="_blank" rel="noopener noreferrer">
+        <div class="project-num"><span>Project / 02</span><span class="project-link-icon">↗</span></div>
         <div class="project-title">CI/CD Pipeline with Jenkins & AWS EC2</div>
         <div class="project-desc">Automated delivery pipeline for a PHP/Laravel app — webhook-triggered builds from GitHub private repo, continuous delivery on every push to dev branch.</div>
         <div class="project-tech">
@@ -647,10 +695,23 @@
           <span class="tech-pill">GitHub</span>
           <span class="tech-pill">Linux</span>
         </div>
-      </div>
+      </a>
 
-      <div class="project-card">
-        <div class="project-num">Project / 03</div>
+      <a class="project-card" href="https://github.com/kunalvhatkar/jenkins-master-slave-ec2" target="_blank" rel="noopener noreferrer">
+        <div class="project-num"><span>Project / 03</span><span class="project-link-icon">↗</span></div>
+        <div class="project-title">Jenkins Master–Slave (Controller–Agent) Setup on AWS EC2</div>
+        <div class="project-desc">Architected a distributed Jenkins build environment with a dedicated Master and Slave node — passwordless SSH auth, parallel job execution, resolved Elastic IP and admin lockout issues.</div>
+        <div class="project-tech">
+          <span class="tech-pill">Jenkins</span>
+          <span class="tech-pill">AWS EC2</span>
+          <span class="tech-pill">SSH</span>
+          <span class="tech-pill">Linux</span>
+          <span class="tech-pill">Elastic IP</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/kunalvhatkar/serverless-api-lambda" target="_blank" rel="noopener noreferrer">
+        <div class="project-num"><span>Project / 04</span><span class="project-link-icon">↗</span></div>
         <div class="project-title">Serverless API with AWS Lambda</div>
         <div class="project-desc">Production-ready REST API using Lambda + API Gateway — fully serverless, auto-scaling backend with zero idle server costs. RDS for persistence, Swagger docs.</div>
         <div class="project-tech">
@@ -660,10 +721,10 @@
           <span class="tech-pill">Python</span>
           <span class="tech-pill">Swagger</span>
         </div>
-      </div>
+      </a>
 
-      <div class="project-card">
-        <div class="project-num">Project / 04</div>
+      <a class="project-card" href="https://github.com/kunalvhatkar/cloudformation-infra-automation" target="_blank" rel="noopener noreferrer">
+        <div class="project-num"><span>Project / 05</span><span class="project-link-icon">↗</span></div>
         <div class="project-title">Infrastructure Automation with CloudFormation</div>
         <div class="project-desc">Reusable CloudFormation templates enabling one-command environment setup for EC2, RDS, and S3 with IAM-based access control and parameterized security groups.</div>
         <div class="project-tech">
@@ -673,10 +734,10 @@
           <span class="tech-pill">RDS</span>
           <span class="tech-pill">S3</span>
         </div>
-      </div>
+      </a>
 
-      <div class="project-card">
-        <div class="project-num">Project / 05</div>
+      <a class="project-card" href="https://github.com/kunalvhatkar/ebs-lvm-storage-management" target="_blank" rel="noopener noreferrer">
+        <div class="project-num"><span>Project / 06</span><span class="project-link-icon">↗</span></div>
         <div class="project-title">Cloud Storage Management – AWS EBS & Linux LVM</div>
         <div class="project-desc">Scalable storage architecture on EC2 using EBS and Linux LVM — zero-downtime expansion, disk exhaustion simulation, dynamic volume scaling with ext4.</div>
         <div class="project-tech">
@@ -686,10 +747,24 @@
           <span class="tech-pill">ext4</span>
           <span class="tech-pill">Shell Scripting</span>
         </div>
-      </div>
+      </a>
 
-      <div class="project-card">
-        <div class="project-num">Project / 06</div>
+      <a class="project-card" href="https://github.com/kunalvhatkar/elastic-apm-observability-stack" target="_blank" rel="noopener noreferrer">
+        <div class="project-num"><span>Project / 07</span><span class="project-link-icon">↗</span></div>
+        <div class="project-title">Elastic APM Observability Stack on AWS EC2</div>
+        <div class="project-desc">Deployed a full Elastic stack (Elasticsearch, Kibana, APM Server) via Docker & Docker Compose — instrumented Node.js and Flask apps, secured with TLS, and resolved cross-service integration issues.</div>
+        <div class="project-tech">
+          <span class="tech-pill">Elasticsearch</span>
+          <span class="tech-pill">Kibana</span>
+          <span class="tech-pill">APM Server</span>
+          <span class="tech-pill">Docker</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">Flask</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/kunalvhatkar/cake-shop-frontend" target="_blank" rel="noopener noreferrer">
+        <div class="project-num"><span>Project / 08</span><span class="project-link-icon">↗</span></div>
         <div class="project-title">Cake Shop Frontend (Dockerized)</div>
         <div class="project-desc">Developed a responsive and visually appealing Cake Shop frontend using HTML and CSS. The application is containerized using Docker to ensure consistent deployment across environments.</div>
         <div class="project-tech">
@@ -698,7 +773,7 @@
           <span class="tech-pill">AWS EC2</span>
           <span class="tech-pill">DOCKER</span>
         </div>
-      </div>
+      </a>
 
     </div>
   </div>
