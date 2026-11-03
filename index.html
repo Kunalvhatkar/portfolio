@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Kunal Vhatkar — Cloud &amp; DevOps Engineer</title>
 <meta name="description" content="Portfolio of Kunal Vhatkar, Cloud & DevOps Engineer specializing in AWS, CI/CD, Docker, Kubernetes and Infrastructure as Code." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,177 +10,100 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0A0F1A;
-    --bg-panel: #0F1726;
-    --bg-panel-2: #121C2E;
-    --line: #223049;
-    --line-soft: #182338;
-    --text: #E8EDF5;
-    --text-dim: #93A1B8;
-    --text-faint: #5C6A82;
-    --teal: #53D8C4;
-    --amber: #F2B84B;
-    --rose: #EF7B72;
-    --teal-glow: rgba(83,216,196,0.18);
-    --amber-glow: rgba(242,184,75,0.16);
-    --mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace;
-    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --bg:#0A0F1A; --bg-panel:#0F1726; --bg-panel-2:#121C2E; --line:#223049; --line-soft:#182338;
+    --text:#E8EDF5; --text-dim:#93A1B8; --text-faint:#5C6A82;
+    --teal:#53D8C4; --amber:#F2B84B; --rose:#EF7B72;
+    --teal-glow:rgba(83,216,196,0.18); --amber-glow:rgba(242,184,75,0.16);
+    --mono:'IBM Plex Mono','SFMono-Regular',Menlo,monospace;
+    --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    color-scheme:dark;
   }
-
   *{ box-sizing:border-box; margin:0; padding:0; }
-
-  html{ scroll-behavior:smooth; }
+  html{ scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px); background:var(--bg); }
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
     *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
   }
-
   body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:var(--sans);
-    line-height:1.6;
+    background-color:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6;
     -webkit-font-smoothing:antialiased;
-    background-image:
-      linear-gradient(var(--line-soft) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-    background-size: 48px 48px;
-    background-position: -1px -1px;
+    background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+    background-size:48px 48px; background-position:-1px -1px;
   }
-
+  body::before{ content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); background:rgba(10,15,26,0.82); backdrop-filter:blur(10px); z-index:60; }
   a{ color:inherit; text-decoration:none; }
   :focus-visible{ outline:2px solid var(--teal); outline-offset:3px; border-radius:2px; }
-
   .wrap{ max-width:1080px; margin:0 auto; padding:0 28px; }
 
-  /* ---------- NAV ---------- */
-  .topnav{
-    position:sticky; top:0; z-index:50;
-    backdrop-filter: blur(10px);
-    background: rgba(10,15,26,0.82);
-    border-bottom:1px solid var(--line);
-  }
+  .topnav{ position:sticky; top:env(safe-area-inset-top,0px); z-index:50; backdrop-filter:blur(10px); background:rgba(10,15,26,0.82); border-bottom:1px solid var(--line); }
   .topnav .wrap{ display:flex; align-items:center; justify-content:space-between; height:60px; }
   .brand{ font-family:var(--mono); font-weight:600; font-size:14px; color:var(--text); letter-spacing:0.5px; }
   .brand .dot{ color:var(--teal); }
-  .navlinks{ display:flex; gap:22px; list-style:none; }
-  .navlinks a{
-    font-family:var(--mono); font-size:12.5px; color:var(--text-dim);
-    transition:color .15s ease;
-  }
-  .navlinks a:hover{ color:var(--teal); }
-  .navlinks{ display:none; }
+  .navlinks{ display:none; gap:22px; list-style:none; }
   @media(min-width:760px){ .navlinks{ display:flex; } }
-  .nav-cta{
-    font-family:var(--mono); font-size:12px; color:var(--bg);
-    background:var(--teal); padding:8px 14px; border-radius:4px; font-weight:600;
-    transition:transform .15s ease, box-shadow .15s ease;
-  }
+  .navlinks a{ font-family:var(--mono); font-size:12.5px; color:var(--text-dim); transition:color .15s ease; }
+  .navlinks a:hover{ color:var(--teal); }
+  .nav-cta{ font-family:var(--mono); font-size:12px; color:var(--bg); background:var(--teal); padding:8px 14px; border-radius:4px; font-weight:600; transition:transform .15s ease, box-shadow .15s ease; }
   .nav-cta:hover{ transform:translateY(-1px); box-shadow:0 6px 20px var(--teal-glow); }
 
-  /* ---------- HERO ---------- */
   .hero{ padding:72px 0 56px; }
-  .status-pill{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:var(--mono); font-size:12px; color:var(--teal);
-    background:var(--teal-glow); border:1px solid rgba(83,216,196,0.35);
-    padding:6px 12px; border-radius:20px; margin-bottom:24px;
-  }
-  .status-pill .blip{
-    width:7px; height:7px; border-radius:50%; background:var(--teal);
-    box-shadow:0 0 0 0 var(--teal-glow);
-    animation:pulse 2s infinite;
-  }
-  @keyframes pulse{
-    0%{ box-shadow:0 0 0 0 rgba(83,216,196,0.55); }
-    70%{ box-shadow:0 0 0 8px rgba(83,216,196,0); }
-    100%{ box-shadow:0 0 0 0 rgba(83,216,196,0); }
-  }
-
+  .status-pill{ display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; color:var(--teal); background:var(--teal-glow); border:1px solid rgba(83,216,196,0.35); padding:6px 12px; border-radius:20px; margin-bottom:24px; }
+  .status-pill .blip{ width:7px; height:7px; border-radius:50%; background:var(--teal); animation:pulse 2s infinite; }
+  @keyframes pulse{ 0%{ box-shadow:0 0 0 0 rgba(83,216,196,0.55); } 70%{ box-shadow:0 0 0 8px rgba(83,216,196,0); } 100%{ box-shadow:0 0 0 0 rgba(83,216,196,0); } }
   .hero-grid{ display:grid; grid-template-columns:1fr; gap:36px; }
   @media(min-width:900px){ .hero-grid{ grid-template-columns:1.05fr 0.95fr; align-items:start; } }
-
   .eyebrow{ font-family:var(--mono); font-size:13px; color:var(--text-faint); margin-bottom:10px; }
   .eyebrow::before{ content:'~$ '; color:var(--teal); }
-
-  h1.name{
-    font-family:var(--sans); font-weight:700; font-size:clamp(38px,6vw,58px);
-    line-height:1.05; letter-spacing:-0.02em; color:var(--text); margin-bottom:10px;
-  }
+  h1.name{ font-family:var(--sans); font-weight:700; font-size:clamp(38px,6vw,58px); line-height:1.05; letter-spacing:-0.02em; color:var(--text); margin-bottom:10px; }
   h1.name .accent{ color:var(--teal); }
-
   .role{ font-family:var(--mono); font-size:16px; color:var(--text-dim); margin-bottom:22px; }
   .role .sep{ color:var(--line); margin:0 8px; }
-
   .summary{ color:var(--text-dim); font-size:15.5px; max-width:52ch; margin-bottom:28px; }
-
   .links-row{ display:flex; flex-wrap:wrap; gap:10px; }
-  .link-chip{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:var(--mono); font-size:13px; color:var(--text);
-    border:1px solid var(--line); padding:9px 14px; border-radius:6px;
-    background:var(--bg-panel);
-    transition:border-color .15s ease, transform .15s ease, background .15s ease;
-  }
+  .link-chip{ display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:13px; color:var(--text); border:1px solid var(--line); padding:9px 14px; border-radius:6px; background:var(--bg-panel); transition:border-color .15s ease, transform .15s ease, background .15s ease; }
   .link-chip:hover{ border-color:var(--teal); transform:translateY(-2px); background:var(--bg-panel-2); }
   .link-chip svg{ width:14px; height:14px; opacity:0.85; }
 
-  /* terminal card */
-  .term{
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:10px;
-    overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.35);
-  }
-  .term-bar{
-    display:flex; align-items:center; gap:8px; padding:11px 14px;
-    border-bottom:1px solid var(--line); background:var(--bg-panel-2);
-  }
+  .term{ background:var(--bg-panel); border:1px solid var(--line); border-radius:10px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.35); }
+  .term-bar{ display:flex; align-items:center; gap:8px; padding:11px 14px; border-bottom:1px solid var(--line); background:var(--bg-panel-2); }
   .term-dot{ width:10px; height:10px; border-radius:50%; }
   .term-dot.r{ background:#EF7B72; } .term-dot.y{ background:#F2B84B; } .term-dot.g{ background:#53D8C4; }
   .term-title{ font-family:var(--mono); font-size:11.5px; color:var(--text-faint); margin-left:8px; }
-  .term-body{ padding:20px 18px; font-family:var(--mono); font-size:13px; color:var(--text-dim); min-height:230px; }
-  .term-body .prompt{ color:var(--teal); }
-  .term-body .cmd{ color:var(--text); }
+  .term-body{ padding:20px 18px; font-family:var(--mono); font-size:13px; color:var(--text-dim); min-height:230px; overflow-x:auto; }
   .term-line{ margin-bottom:6px; white-space:pre-wrap; }
+  .term-line.cmd{ color:var(--text); }
   .term-out{ color:var(--text-dim); margin-bottom:14px; }
-  .term-out .k{ color:var(--amber); }
   .cursor{ display:inline-block; width:7px; height:14px; background:var(--teal); vertical-align:middle; animation:blink 1s step-end infinite; }
   @keyframes blink{ 50%{ opacity:0; } }
 
-  /* ---------- SECTION SHELL ---------- */
   section{ padding:64px 0; border-top:1px solid var(--line-soft); }
   .sec-head{ display:flex; align-items:baseline; gap:12px; margin-bottom:32px; flex-wrap:wrap; }
   .sec-tag{ font-family:var(--mono); font-size:12px; color:var(--teal); border:1px solid rgba(83,216,196,0.35); background:var(--teal-glow); padding:4px 10px; border-radius:4px; }
   .sec-title{ font-family:var(--sans); font-weight:700; font-size:26px; color:var(--text); }
-  .sec-sub{ color:var(--text-faint); font-size:14px; margin-top:6px; font-family:var(--mono); }
-
+  .sec-sub{ color:var(--text-faint); font-size:14px; font-family:var(--mono); }
   .reveal{ opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; }
   .reveal.in{ opacity:1; transform:translateY(0); }
 
-  /* ---------- ABOUT ---------- */
   .about-body{ color:var(--text-dim); font-size:16px; max-width:74ch; }
   .about-body strong{ color:var(--text); font-weight:600; }
 
-  /* ---------- STACK / SKILLS ---------- */
   .stack-grid{ display:grid; grid-template-columns:1fr; gap:14px; }
   @media(min-width:700px){ .stack-grid{ grid-template-columns:1fr 1fr; } }
-  .stack-card{
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:8px; padding:18px 18px;
-    transition:border-color .15s ease;
-  }
+  .stack-card{ background:var(--bg-panel); border:1px solid var(--line); border-radius:8px; padding:18px; transition:border-color .15s ease; }
   .stack-card:hover{ border-color:var(--teal); }
   .stack-card h3{ font-family:var(--mono); font-size:12.5px; color:var(--amber); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
   .chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
   .chip{ font-family:var(--mono); font-size:12.5px; color:var(--text-dim); border:1px solid var(--line); padding:5px 10px; border-radius:5px; background:var(--bg); }
+  .chip.gcp{ border-color:rgba(83,216,196,0.35); }
 
-  /* ---------- EXPERIENCE (deploy log) ---------- */
   .log{ position:relative; padding-left:26px; }
   .log::before{ content:''; position:absolute; left:6px; top:6px; bottom:6px; width:1px; background:var(--line); }
   .log-item{ position:relative; padding-bottom:34px; }
   .log-item:last-child{ padding-bottom:0; }
-  .log-item::before{
-    content:''; position:absolute; left:-26px; top:4px; width:11px; height:11px; border-radius:50%;
-    background:var(--bg); border:2px solid var(--teal);
-  }
+  .log-item::before{ content:''; position:absolute; left:-26px; top:4px; width:11px; height:11px; border-radius:50%; background:var(--bg); border:2px solid var(--teal); }
   .log-item.past::before{ border-color:var(--text-faint); }
   .log-meta{ font-family:var(--mono); font-size:12px; color:var(--text-faint); margin-bottom:4px; }
   .log-meta .status{ color:var(--teal); }
@@ -191,13 +114,9 @@
   .log li{ position:relative; padding-left:18px; color:var(--text-dim); font-size:14.5px; margin-bottom:7px; }
   .log li::before{ content:'›'; position:absolute; left:0; color:var(--teal); font-family:var(--mono); }
 
-  /* ---------- PROJECTS (pipeline cards) ---------- */
   .proj-grid{ display:grid; grid-template-columns:1fr; gap:18px; }
   @media(min-width:760px){ .proj-grid{ grid-template-columns:1fr 1fr; } }
-  .proj-card{
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:10px; padding:20px;
-    display:flex; flex-direction:column; transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease;
-  }
+  .proj-card{ background:var(--bg-panel); border:1px solid var(--line); border-radius:10px; padding:20px; display:flex; flex-direction:column; transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease; }
   .proj-card:hover{ border-color:var(--teal); transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,0,0,0.35); }
   .pipe-row{ display:flex; align-items:center; gap:5px; margin-bottom:14px; }
   .pipe-stage{ width:8px; height:8px; border-radius:2px; background:var(--teal); opacity:0.85; }
@@ -209,49 +128,35 @@
   .proj-card ul{ list-style:none; margin-top:auto; }
   .proj-card li{ position:relative; padding-left:16px; color:var(--text-dim); font-size:13.5px; margin-bottom:7px; }
   .proj-card li::before{ content:'—'; position:absolute; left:0; color:var(--amber); }
-  .proj-link{
-    display:inline-flex; align-items:center; gap:7px; margin-top:16px;
-    font-family:var(--mono); font-size:12px; color:var(--teal);
-    border:1px solid rgba(83,216,196,0.35); background:var(--teal-glow);
-    padding:7px 12px; border-radius:6px; align-self:flex-start;
-    transition:border-color .15s ease, transform .15s ease, background .15s ease;
-  }
+  .proj-link{ display:inline-flex; align-items:center; gap:7px; margin-top:16px; font-family:var(--mono); font-size:12px; color:var(--teal); border:1px solid rgba(83,216,196,0.35); background:var(--teal-glow); padding:7px 12px; border-radius:6px; align-self:flex-start; transition:border-color .15s ease, transform .15s ease, background .15s ease; }
   .proj-link svg{ width:13px; height:13px; }
   .proj-link:hover{ border-color:var(--teal); transform:translateY(-2px); background:rgba(83,216,196,0.28); }
 
-  /* ---------- CERTS ---------- */
   .cert-grid{ display:grid; grid-template-columns:1fr; gap:14px; }
   @media(min-width:700px){ .cert-grid{ grid-template-columns:1fr 1fr; } }
   .cert-card{ background:var(--bg-panel); border:1px solid var(--line); border-radius:8px; padding:18px; display:flex; gap:14px; align-items:flex-start; }
-  .cert-badge{
-    flex:0 0 auto; width:42px; height:42px; border-radius:8px; background:var(--amber-glow);
-    border:1px solid rgba(242,184,75,0.4); display:flex; align-items:center; justify-content:center;
-    color:var(--amber); font-family:var(--mono); font-weight:700; font-size:14px;
-  }
+  .cert-badge{ flex:0 0 auto; width:42px; height:42px; border-radius:8px; background:var(--amber-glow); border:1px solid rgba(242,184,75,0.4); display:flex; align-items:center; justify-content:center; color:var(--amber); font-family:var(--mono); font-weight:700; font-size:14px; }
   .cert-name{ font-weight:600; font-size:14.5px; color:var(--text); margin-bottom:4px; }
   .cert-meta{ font-family:var(--mono); font-size:11.5px; color:var(--text-faint); word-break:break-all; }
 
-  /* ---------- EDUCATION ---------- */
   .edu-item{ display:flex; justify-content:space-between; gap:16px; padding:16px 0; border-bottom:1px solid var(--line-soft); flex-wrap:wrap; }
   .edu-item:last-child{ border-bottom:none; }
   .edu-degree{ font-weight:600; font-size:15.5px; color:var(--text); }
   .edu-school{ font-family:var(--mono); font-size:12.5px; color:var(--text-dim); margin-top:3px; }
   .edu-date{ font-family:var(--mono); font-size:12.5px; color:var(--text-faint); white-space:nowrap; }
 
-  /* ---------- CONTACT / FOOTER ---------- */
-  .contact-panel{
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:40px 32px; text-align:center;
-  }
+  .contact-panel{ background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:40px 32px; text-align:center; }
   .contact-panel h2{ font-size:26px; font-weight:700; margin-bottom:10px; }
   .contact-panel p{ color:var(--text-dim); margin-bottom:24px; font-size:15px; }
   .contact-links{ display:flex; justify-content:center; flex-wrap:wrap; gap:12px; }
-
   footer{ padding:34px 0 50px; text-align:center; }
   footer .fline{ font-family:var(--mono); font-size:12px; color:var(--text-faint); }
   footer .fline .teal{ color:var(--teal); }
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-gh" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol></svg>
 
 <nav class="topnav">
   <div class="wrap">
@@ -271,46 +176,26 @@
 <header class="hero">
   <div class="wrap">
     <span class="status-pill"><span class="blip"></span>ACTIVE — SOFTWARE ENGINEER TRAINEE @ ENVEU</span>
-
     <div class="hero-grid">
       <div>
         <div class="eyebrow">whoami</div>
         <h1 class="name"><span class="accent">Kunal Vhatkar</span></h1>
         <div class="role">Cloud Engineer <span class="sep">/</span> DevOps Engineer <span class="sep">/</span> AWS Certified</div>
-        <p class="summary">
-          I build infrastructure that deploys itself. Automating AWS environments, CI/CD pipelines,
-          and container platforms so releases ship in minutes, not hours — with Terraform, CloudFormation,
-          Docker, and Kubernetes doing the heavy lifting.
-        </p>
+        <p class="summary">I build infrastructure that deploys itself. Automating AWS environments, CI/CD pipelines, and container platforms so releases ship in minutes, not hours — with Terraform, CloudFormation, Docker, and Kubernetes doing the heavy lifting.</p>
         <div class="links-row">
-          <a class="link-chip" href="https://github.com/Kunalvhatkar/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-            GitHub
-          </a>
+          <a class="link-chip" href="https://github.com/Kunalvhatkar/" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>GitHub</a>
           <a class="link-chip" href="https://www.linkedin.com/in/kunalvhatkar17198/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M14.82 0H1.18C.53 0 0 .53 0 1.18v13.64C0 15.47.53 16 1.18 16h13.64c.65 0 1.18-.53 1.18-1.18V1.18C16 .53 15.47 0 14.82 0zM4.75 13.4H2.4V6h2.35v7.4zM3.58 5.01c-.75 0-1.36-.61-1.36-1.36 0-.75.61-1.36 1.36-1.36.75 0 1.36.61 1.36 1.36 0 .75-.61 1.36-1.36 1.36zM13.6 13.4h-2.34V9.8c0-.86-.02-1.96-1.2-1.96-1.2 0-1.39.94-1.39 1.9v3.66H6.33V6h2.25v1.01h.03c.31-.59 1.08-1.2 2.22-1.2 2.38 0 2.82 1.56 2.82 3.6v3.99z"/></svg>
-            LinkedIn
-          </a>
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M14.82 0H1.18C.53 0 0 .53 0 1.18v13.64C0 15.47.53 16 1.18 16h13.64c.65 0 1.18-.53 1.18-1.18V1.18C16 .53 15.47 0 14.82 0zM4.75 13.4H2.4V6h2.35v7.4zM3.58 5.01c-.75 0-1.36-.61-1.36-1.36 0-.75.61-1.36 1.36-1.36.75 0 1.36.61 1.36 1.36 0 .75-.61 1.36-1.36 1.36zM13.6 13.4h-2.34V9.8c0-.86-.02-1.96-1.2-1.96-1.2 0-1.39.94-1.39 1.9v3.66H6.33V6h2.25v1.01h.03c.31-.59 1.08-1.2 2.22-1.2 2.38 0 2.82 1.56 2.82 3.6v3.99z"/></svg>LinkedIn</a>
           <a class="link-chip" href="mailto:kunalvhatkar3@gmail.com">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3A1.5 1.5 0 0 0 0 4.5v.379l7.518 4.72a1 1 0 0 0 .964 0L16 4.879V4.5A1.5 1.5 0 0 0 14.5 3h-13zM16 6.117 9.02 10.44a2 2 0 0 1-2.04 0L0 6.117V11.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V6.117z"/></svg>
-            Email
-          </a>
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3A1.5 1.5 0 0 0 0 4.5v.379l7.518 4.72a1 1 0 0 0 .964 0L16 4.879V4.5A1.5 1.5 0 0 0 14.5 3h-13zM16 6.117 9.02 10.44a2 2 0 0 1-2.04 0L0 6.117V11.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V6.117z"/></svg>Email</a>
           <a class="link-chip" href="tel:+919822851125">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.65 1.5c-.3-.75-1.1-1.15-1.85-.85l-1.2.5c-.7.3-1.1 1.05-.95 1.8C.6 8.5 7.5 15.4 13 16.4c.75.15 1.5-.25 1.8-.95l.5-1.2c.3-.75-.1-1.55-.85-1.85l-2.4-1c-.6-.25-1.3-.05-1.7.45l-.75.95c-2.2-1.1-4-2.9-5.1-5.1l.95-.75c.5-.4.7-1.1.45-1.7l-1-2.4z"/></svg>
-            +91 98228 51125
-          </a>
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.65 1.5c-.3-.75-1.1-1.15-1.85-.85l-1.2.5c-.7.3-1.1 1.05-.95 1.8C.6 8.5 7.5 15.4 13 16.4c.75.15 1.5-.25 1.8-.95l.5-1.2c.3-.75-.1-1.55-.85-1.85l-2.4-1c-.6-.25-1.3-.05-1.7.45l-.75.95c-2.2-1.1-4-2.9-5.1-5.1l.95-.75c.5-.4.7-1.1.45-1.7l-1-2.4z"/></svg>+91 98228 51125</a>
           <a class="link-chip" href="#contact">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-            Navi Mumbai, IN
-          </a>
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>Navi Mumbai, IN</a>
         </div>
       </div>
-
       <div class="term">
-        <div class="term-bar">
-          <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
-          <span class="term-title">kunal@devops — status</span>
-        </div>
+        <div class="term-bar"><span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span><span class="term-title">kunal@devops — status</span></div>
         <div class="term-body" id="termBody"></div>
       </div>
     </div>
@@ -319,29 +204,16 @@
 
 <section id="about">
   <div class="wrap reveal">
-    <div class="sec-head">
-      <span class="sec-tag">~/about</span>
-      <h2 class="sec-title">Professional Summary</h2>
-    </div>
+    <div class="sec-head"><span class="sec-tag">~/about</span><h2 class="sec-title">Professional Summary</h2></div>
     <p class="about-body">
-      Results-driven <strong>Cloud &amp; DevOps Engineer</strong> with hands-on experience in AWS infrastructure automation,
-      CI/CD pipeline implementation, and Infrastructure as Code using <strong>Terraform</strong> and <strong>CloudFormation</strong>.
-      Proficient in containerization with <strong>Docker</strong>, orchestration with <strong>Kubernetes</strong>, and serverless
-      architecture using <strong>AWS Lambda</strong>. Experienced in deploying and managing scalable, secure, and cost-optimized
-      cloud environments across <strong>AWS</strong> and <strong>Azure</strong>. Adept at Linux administration, shell scripting, and
-      integrating DevOps best practices to accelerate software delivery. <strong>AWS Certified Cloud Practitioner</strong> with a
-      Master's in IT specializing in Cloud Computing.
+      Results-driven <strong>Cloud &amp; DevOps Engineer</strong> with hands-on experience in AWS infrastructure automation, CI/CD pipeline implementation, and Infrastructure as Code using <strong>Terraform</strong> and <strong>CloudFormation</strong>. Proficient in containerization with <strong>Docker</strong>, orchestration with <strong>Kubernetes</strong>, and serverless architecture using <strong>AWS Lambda</strong>. Experienced in deploying and managing scalable, secure, and cost-optimized cloud environments across <strong>AWS</strong> and <strong>Azure</strong>. Adept at Linux administration, shell scripting, and integrating DevOps best practices to accelerate software delivery. <strong>AWS Certified Cloud Practitioner</strong> with a Master’s in IT specializing in Cloud Computing.
     </p>
   </div>
 </section>
 
 <section id="stack">
   <div class="wrap reveal">
-    <div class="sec-head">
-      <span class="sec-tag">~/stack</span>
-      <h2 class="sec-title">Technical Stack</h2>
-      <span class="sec-sub">// tools I reach for by default</span>
-    </div>
+    <div class="sec-head"><span class="sec-tag">~/stack</span><h2 class="sec-title">Technical Stack</h2><span class="sec-sub">// tools I reach for by default</span></div>
     <div class="stack-grid">
       <div class="stack-card">
         <h3>Cloud Platforms</h3>
@@ -350,41 +222,30 @@
           <span class="chip">IAM</span><span class="chip">CloudFormation</span><span class="chip">CDK</span>
           <span class="chip">S3</span><span class="chip">API Gateway</span><span class="chip">Azure VMs</span>
           <span class="chip">Azure SQL DB</span><span class="chip">AKS</span><span class="chip">Azure Functions</span>
+          <span class="chip gcp">GCP Compute Engine</span><span class="chip gcp">GKE</span><span class="chip gcp">Cloud Storage</span>
+          <span class="chip gcp">Cloud SQL</span><span class="chip gcp">Cloud Functions</span><span class="chip gcp">GCP IAM</span>
+          <span class="chip gcp">VPC</span><span class="chip gcp">Cloud Monitoring</span>
         </div>
       </div>
       <div class="stack-card">
         <h3>DevOps &amp; CI/CD</h3>
-        <div class="chip-row">
-          <span class="chip">Jenkins</span><span class="chip">GitHub Actions</span><span class="chip">Docker</span>
-          <span class="chip">Kubernetes</span><span class="chip">Jenkins Pipeline</span><span class="chip">Automated Deployments</span>
-        </div>
+        <div class="chip-row"><span class="chip">Jenkins</span><span class="chip">GitHub Actions</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Jenkins Pipeline</span><span class="chip">Automated Deployments</span></div>
       </div>
       <div class="stack-card">
         <h3>IaC &amp; Automation</h3>
-        <div class="chip-row">
-          <span class="chip">Terraform</span><span class="chip">CloudFormation</span><span class="chip">Ansible</span><span class="chip">AWS CDK</span>
-        </div>
+        <div class="chip-row"><span class="chip">Terraform</span><span class="chip">CloudFormation</span><span class="chip">Ansible</span><span class="chip">AWS CDK</span></div>
       </div>
       <div class="stack-card">
         <h3>Observability</h3>
-        <div class="chip-row">
-          <span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">CloudWatch</span>
-          <span class="chip">Elasticsearch</span><span class="chip">Kibana</span><span class="chip">APM Server</span>
-        </div>
+        <div class="chip-row"><span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">CloudWatch</span><span class="chip">Elasticsearch</span><span class="chip">Kibana</span><span class="chip">APM Server</span></div>
       </div>
       <div class="stack-card">
         <h3>Languages &amp; Scripting</h3>
-        <div class="chip-row">
-          <span class="chip">Python</span><span class="chip">PHP</span><span class="chip">Laravel</span>
-          <span class="chip">JavaScript</span><span class="chip">HTML/CSS</span><span class="chip">Bash</span><span class="chip">PowerShell</span>
-        </div>
+        <div class="chip-row"><span class="chip">Python</span><span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">JavaScript</span><span class="chip">HTML/CSS</span><span class="chip">Bash</span><span class="chip">PowerShell</span></div>
       </div>
       <div class="stack-card">
         <h3>Platform &amp; Tools</h3>
-        <div class="chip-row">
-          <span class="chip">Git / GitHub</span><span class="chip">Linux (Ubuntu, Amazon Linux)</span><span class="chip">Windows</span>
-          <span class="chip">Swagger</span><span class="chip">Postman</span><span class="chip">VS Code</span>
-        </div>
+        <div class="chip-row"><span class="chip">Git / GitHub</span><span class="chip">Linux (Ubuntu, Amazon Linux)</span><span class="chip">Windows</span><span class="chip">Swagger</span><span class="chip">Postman</span><span class="chip">VS Code</span></div>
       </div>
     </div>
   </div>
@@ -392,11 +253,7 @@
 
 <section id="experience">
   <div class="wrap reveal">
-    <div class="sec-head">
-      <span class="sec-tag">~/experience</span>
-      <h2 class="sec-title">Deployment History</h2>
-    </div>
-
+    <div class="sec-head"><span class="sec-tag">~/experience</span><h2 class="sec-title">Deployment History</h2></div>
     <div class="log">
       <div class="log-item">
         <div class="log-meta"><span class="status">● active</span> · Jul 2026 — October 2026</div>
@@ -409,7 +266,6 @@
           <li>Automated QA server resilience via a disk-space monitoring script — triggers at 70% disk utilization on reboot to stop/restart Docker containers and purge old log files, reclaiming space and preventing outages.</li>
         </ul>
       </div>
-
       <div class="log-item past">
         <div class="log-meta"><span class="status">✓ complete</span> · Jun 2024 — Apr 2025</div>
         <div class="log-role">Cloud &amp; DevOps Engineer Intern</div>
@@ -429,12 +285,7 @@
 
 <section id="projects">
   <div class="wrap reveal">
-    <div class="sec-head">
-      <span class="sec-tag">~/projects</span>
-      <h2 class="sec-title">Builds &amp; Pipelines</h2>
-      <span class="sec-sub">// 7 projects, all shipped and verified</span>
-    </div>
-
+    <div class="sec-head"><span class="sec-tag">~/projects</span><h2 class="sec-title">Builds &amp; Pipelines</h2><span class="sec-sub">// 7 projects, all shipped and verified</span></div>
     <div class="proj-grid">
 
       <div class="proj-card">
@@ -446,10 +297,7 @@
           <li>Managed remote state via S3 backend for safe, team-friendly deployments.</li>
           <li>Modular structure with separate variable, output, and provider files for reusability.</li>
         </ul>
-        <a class="proj-link" href="https://github.com/Kunalvhatkar/terraform-aws-infra.git" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-          View on GitHub
-        </a>
+        <a class="proj-link" href="https://github.com/Kunalvhatkar/terraform-aws-infra.git" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>View on GitHub</a>
       </div>
 
       <div class="proj-card">
@@ -461,10 +309,7 @@
           <li>Executed zero-downtime storage expansion and simulated disk exhaustion scenarios.</li>
           <li>Applied Linux storage troubleshooting and monitoring best practices.</li>
         </ul>
-        <a class="proj-link" href="https://github.com/Kunalvhatkar/linux-lvm-aws-ec2-project.git" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-          View on GitHub
-        </a>
+        <a class="proj-link" href="https://github.com/Kunalvhatkar/linux-lvm-aws-ec2-project.git" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>View on GitHub</a>
       </div>
 
       <div class="proj-card">
@@ -476,10 +321,7 @@
           <li>Set up passwordless SSH key auth and registered the slave as a restricted Jenkins node.</li>
           <li>Resolved a changing EC2 public IP (fixed via Elastic IP) and Jenkins admin lockout recovery.</li>
         </ul>
-        <a class="proj-link" href="https://github.com/Kunalvhatkar/jenkins-master-slave-aws-ec2.git" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-          View on GitHub
-        </a>
+        <a class="proj-link" href="https://github.com/Kunalvhatkar/jenkins-master-slave-aws-ec2.git" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>View on GitHub</a>
       </div>
 
       <div class="proj-card">
@@ -491,10 +333,7 @@
           <li>Declarative Jenkinsfile with staged checks: SSH connectivity, Docker availability, build, container replacement, deploy verification.</li>
           <li>Containerized the app and deployed it to a remote EC2 host over SSH.</li>
         </ul>
-        <a class="proj-link" href="https://github.com/Kunalvhatkar/SpringBootApp-Docker-Jenkins.git" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-          View on GitHub
-        </a>
+        <a class="proj-link" href="https://github.com/Kunalvhatkar/SpringBootApp-Docker-Jenkins.git" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>View on GitHub</a>
       </div>
 
       <div class="proj-card">
@@ -506,10 +345,7 @@
           <li>Idempotent Bash backup script with error handling and S3 object tagging by date.</li>
           <li>Backup sidecar mounts the log volume read-only for safety.</li>
         </ul>
-        <a class="proj-link" href="https://github.com/Kunalvhatkar/NodeJS-Docker-DockerCompose.git" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-          View on GitHub
-        </a>
+        <a class="proj-link" href="https://github.com/Kunalvhatkar/NodeJS-Docker-DockerCompose.git" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>View on GitHub</a>
       </div>
 
       <div class="proj-card">
@@ -521,10 +357,7 @@
           <li>Configured Deployments, Services, and NodePort exposure; repeated via Bitnami Helm chart with upgrade/rollback.</li>
           <li>Resolved cluster networking issues specific to Minikube on a remote EC2 host via port-forwarding.</li>
         </ul>
-        <a class="proj-link" href="https://github.com/Kunalvhatkar/Deploy-Nginx-MiniKube-Kubernetes.git" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-          View on GitHub
-        </a>
+        <a class="proj-link" href="https://github.com/Kunalvhatkar/Deploy-Nginx-MiniKube-Kubernetes.git" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>View on GitHub</a>
       </div>
 
       <div class="proj-card">
@@ -536,10 +369,7 @@
           <li>Instrumented Node.js and Python Flask apps with Elastic APM agents to capture transactions, errors, and metrics in Kibana.</li>
           <li>Resolved TLS/certificate trust issues and configured the Fleet APM integration package.</li>
         </ul>
-        <a class="proj-link" href="https://github.com/Kunalvhatkar/APM-Python-Helloworld-app.git" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-          View on GitHub
-        </a>
+        <a class="proj-link" href="https://github.com/Kunalvhatkar/APM-Python-Helloworld-app.git" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>View on GitHub</a>
       </div>
 
     </div>
@@ -548,56 +378,26 @@
 
 <section id="certs">
   <div class="wrap reveal">
-    <div class="sec-head">
-      <span class="sec-tag">~/certifications</span>
-      <h2 class="sec-title">Certifications</h2>
-    </div>
+    <div class="sec-head"><span class="sec-tag">~/certifications</span><h2 class="sec-title">Certifications</h2></div>
     <div class="cert-grid">
-      <div class="cert-card">
-        <div class="cert-badge">AWS</div>
-        <div>
-          <div class="cert-name">AWS Certified Cloud Practitioner (CLF-C02)</div>
-          <div class="cert-meta">Issued Jun 17, 2025 · Validation: d81d402b27b44582b54cc7766a7d2fcd</div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-badge">101</div>
-        <div>
-          <div class="cert-name">AWS Educate — Introduction to Cloud 101</div>
-          <div class="cert-meta">AWS Educate</div>
-        </div>
-      </div>
+      <div class="cert-card"><div class="cert-badge">AWS</div><div><div class="cert-name">AWS Certified Cloud Practitioner (CLF-C02)</div><div class="cert-meta">Issued Jun 17, 2025 · Validation: d81d402b27b44582b54cc7766a7d2fcd</div></div></div>
+      <div class="cert-card"><div class="cert-badge">101</div><div><div class="cert-name">AWS Educate — Introduction to Cloud 101</div><div class="cert-meta">AWS Educate</div></div></div>
     </div>
   </div>
 </section>
 
 <section id="education">
   <div class="wrap reveal">
-    <div class="sec-head">
-      <span class="sec-tag">~/education</span>
-      <h2 class="sec-title">Education</h2>
-    </div>
-    <div class="edu-item">
-      <div>
-        <div class="edu-degree">M.Sc. Information Technology — Cloud Computing Specialization</div>
-        <div class="edu-school">University of Mumbai, Mumbai</div>
-      </div>
-      <div class="edu-date">Completed Sep 2025</div>
-    </div>
-    <div class="edu-item">
-      <div>
-        <div class="edu-degree">B.Sc. Information Technology</div>
-        <div class="edu-school">University of Mumbai, Mumbai</div>
-      </div>
-      <div class="edu-date">Completed Jun 2019</div>
-    </div>
+    <div class="sec-head"><span class="sec-tag">~/education</span><h2 class="sec-title">Education</h2></div>
+    <div class="edu-item"><div><div class="edu-degree">M.Sc. Information Technology — Cloud Computing Specialization</div><div class="edu-school">University of Mumbai, Mumbai</div></div><div class="edu-date">Completed Sep 2025</div></div>
+    <div class="edu-item"><div><div class="edu-degree">B.Sc. Information Technology</div><div class="edu-school">University of Mumbai, Mumbai</div></div><div class="edu-date">Completed Jun 2019</div></div>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap reveal">
     <div class="contact-panel">
-      <h2>Let's ship something.</h2>
+      <h2>Let’s ship something.</h2>
       <p>Open to Cloud &amp; DevOps roles — infrastructure automation, CI/CD, and platform engineering.</p>
       <div class="contact-links">
         <a class="link-chip" href="mailto:kunalvhatkar3@gmail.com">Email — kunalvhatkar3@gmail.com</a>
@@ -610,13 +410,10 @@
 </section>
 
 <footer>
-  <div class="wrap">
-    <div class="fline">$ echo "built by Kunal Vhatkar" <span class="teal">// Navi Mumbai, India</span></div>
-  </div>
+  <div class="wrap"><div class="fline">$ echo "built by Kunal Vhatkar" <span class="teal">// Navi Mumbai, India</span></div></div>
 </footer>
 
 <script>
-  // Typewriter terminal effect
   const lines = [
     { type:'cmd', text:'kunal@devops:~$ systemctl status current-role' },
     { type:'out', text:'● software-engineer-trainee.service - Enveu (Mlinots Technologies)\n   Active: active (running) since Jul 2026\n   Stack: AWS · Docker · Kubernetes · Jenkins · Terraform' },
@@ -624,14 +421,12 @@
     { type:'out', text:'{\n  "role": "Cloud & DevOps Engineer",\n  "cert": "AWS Certified Cloud Practitioner",\n  "focus": ["CI/CD", "IaC", "Containers", "Observability"]\n}' },
     { type:'cmd', text:'kunal@devops:~$ cat education.txt' },
     { type:'out', text:'M.Sc. IT — Cloud Computing Specialization\nUniversity of Mumbai, 2025' },
-    { type:'cmd', text:'kunal@devops:~$ _' , cursorAfter:true }
+    { type:'cmd', text:'kunal@devops:~$ _', cursorAfter:true }
   ];
-
   const body = document.getElementById('termBody');
   let li = 0, ci = 0;
-
   function typeNext(){
-    if(li >= lines.length){ return; }
+    if(li >= lines.length) return;
     const line = lines[li];
     if(ci === 0){
       const p = document.createElement('div');
@@ -643,25 +438,19 @@
     if(ci < line.text.length){
       el.textContent = line.text.slice(0, ci+1);
       ci++;
-      window.scrollSpeed = line.type === 'cmd' ? 18 : 4;
-      setTimeout(typeNext, window.scrollSpeed);
+      setTimeout(typeNext, line.type === 'cmd' ? 18 : 4);
     } else {
-      if(line.cursorAfter){
-        el.innerHTML = el.textContent.replace(/_$/, '') + '<span class="cursor"></span>';
-      }
+      if(line.cursorAfter){ el.innerHTML = el.textContent.replace(/_$/, '') + '<span class="cursor"></span>'; }
       li++; ci = 0;
       setTimeout(typeNext, 260);
     }
   }
   typeNext();
 
-  // Reveal on scroll
-  const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.08 });
-  revealEls.forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
-
 </body>
 </html>
